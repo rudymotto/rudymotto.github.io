@@ -1,1 +1,2 @@
-# rudymotto.github.io
+# 一言
+随机生成一些收藏的词藻
