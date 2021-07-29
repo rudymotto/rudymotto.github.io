@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class=" js touch" data-redeviation-bs-uid="43677">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    	<title>物随心</title>
+        <link rel="shortcut icon" href="./ico/favicon.ico" type="image/x-icon">
+    	<link rel="stylesheet" type="text/css" href="./css/default.css">
+    	<link rel="stylesheet" type="text/css" href="./css/component.css">
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+        <script src="./js/motto.js"></script>
+        <style type="text/css">
+            .container{
+                padding: 10px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                height: 100%;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+        </style>
+	</head>
+	<body>
+		<div class="container" style="text-align: center;">
+			<header>
+				<h1><span id="text"></span></h1>	
+			</header>
+            <button class="btn btn-3 btn-3c icon-reload-1" onclick="randomMotto();">Random</button>
+		</div>
+        <script>  
+            var str = "";
+            var mydiv = document.getElementById("text");
+            function randomMotto() {
+                $("#text").hide();
+                var mottoLength = mottos.length;
+                var random = Math.floor(Math.random()*mottoLength);
+                str = mottos[random].content;
+                mydiv.innerHTML = str;
+                $("#text").fadeToggle("slow");
+            }
+            window.onload = randomMotto();
+        </script>
+    </body>
+</html>
