@@ -37,7 +37,7 @@
 			<header>
 				<h1><span id="text"></span></h1>	
 			</header>
-            <button class="btn btn-3 btn-3c icon-reload-1" onclick="randomMotto();">Random</button>
+            <button class="btn btn-3 btn-3c icon-reload-1" onclick="yiyan();">Random</button>
 		</div>
         <script>  
             var str = "";
@@ -50,7 +50,14 @@
                 mydiv.innerHTML = str;
                 $("#text").fadeToggle("slow");
             }
-            window.onload = randomMotto();
+            //window.onload = randomMotto();
+            function yiyan() {
+                $("#text").hide();
+                var htmlobj = $.ajax({url:"https://v1.hitokoto.cn/?encode=text",async:false});
+                 mydiv.innerHTML = htmlobj.responseText;
+                $("#text").fadeToggle("slow");
+            }
+            window.onload = yiyan();
         </script>
     </body>
 </html>
