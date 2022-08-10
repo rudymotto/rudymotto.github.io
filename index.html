@@ -6,38 +6,55 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     	<title>物随心</title>
         <link rel="shortcut icon" href="./ico/favicon.ico" type="image/x-icon">
-    	<link rel="stylesheet" type="text/css" href="./css/default.css">
-    	<link rel="stylesheet" type="text/css" href="./css/component.css">
+    	<!-- 引入样式 -->
+        <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+        <!-- 引入组件库 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/element-ui/lib/index.js"></script>
         <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
         <script src="./js/motto.js"></script>
         <style type="text/css">
-            .container{
-                padding: 10px;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: flex;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                align-items: center;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                justify-content: center;
-                -webkit-box-orient: vertical;
-                -webkit-box-direction: normal;
-                -ms-flex-direction: column;
-                flex-direction: column;
-                height: 100%;
+            .el-container {
+                min-height: 400px;
+                margin-top: 40px;
+                text-align: center;
+            }
+            .el-header {
+                font-family: cursive;
+                font-size: 20px;
+            }
+            #text {
+                color: #637181;
+                line-height: 26px;
+                font-size: 14px;
+                height: auto;
+                text-align: justify;
+                text-justify: distribute;
+                -moz-text-align-last: justify;
+                -webkit-text-align-last: justify;
             }
         </style>
 	</head>
 	<body>
-		<div class="container" style="text-align: center;">
-			<header>
-				<h1 onclick="randomMotto();"><span id="text"></span></h1>	
-			</header>
-            <button class="btn btn-3 btn-3c icon-reload-1" onclick="yiyan();">Random</button>
-		</div>
-        <script>  
+            <el-container id="app">
+              <el-header>
+                  <span>一言</span>
+                  <el-divider direction="vertical"></el-divider>
+                  <span>一语</span>
+                  <el-divider direction="vertical"></el-divider>
+                  <span>一世界</span>
+              </el-header>
+              <el-divider content-position="left">🌄</el-divider>
+              <el-main onclick="randomMotto();"><span id="text"></span></el-main>
+              <el-divider content-position="right">🌇</el-divider>
+              <el-row>
+                <el-button type="success" icon="el-icon-refresh" onclick="yiyan();" circle></el-button>
+              </el-row>
+            </el-container>
+        <script> 
+            new Vue({
+                el:'#app'
+            });
             var str = "";
             var mydiv = document.getElementById("text");
             function randomMotto() {
@@ -56,12 +73,6 @@
                 $("#text").fadeToggle("slow");
             }
             window.onload = yiyan();
-	        window.onblur = function() {
-                document.title = "我在这儿 | 等着你回来😭";
-            };
-            window.onfocus = function() {
-                document.title = "物随心";
-            }
         </script>
     </body>
 </html>
